@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import Passwordinput from "../../components/input/Passwordinput"
-// import Signup from '../Signup/Signup'
 import { validateemail } from '../../utils/helper'
+
 import axiosInstance from '../../utils/axiosInstance'
 const Login = () => {
     const[email,setemail]=useState("")
     const[password,setpassword]=useState("")
     const[error,seterror]=useState(null)
-    // const navigate=useNavigate()
+    const navigate=useNavigate()
 
     const handlelogin=async(e)=>{
         e.preventDefault()
@@ -22,11 +22,10 @@ const Login = () => {
             return;
         }
         seterror("")
-
-        try{
+  try{
             const response=await axiosInstance.post('/login',{
                 email:email,
-            password: password,
+                password: password,
 
             })
             if(response.data && response.data.accessToken){
@@ -73,7 +72,7 @@ const Login = () => {
            
             <p className='text-sm text-center mt-4'>
                  Not registerd yet?{""} 
-            <Link to="/Signup" 
+            <Link to="/signup" 
              className='font-medium text-primary underline'>Create an Account</Link> </p>
 
         </form>

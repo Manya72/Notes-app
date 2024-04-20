@@ -1,3 +1,5 @@
+
+
 import axios from'axios'
 import {BASE_URL} from './constants'
 
@@ -8,11 +10,11 @@ const axiosInstance=axios.create({
         "Content-Type":"application/json"
     },
 })
-axiosInstance.intereptors.request.use(
+axiosInstance.interceptors.request.use(
     (config)=>{
         const accessToken=localStorage.getItem("token")
         if(accessToken){
-            config.headers.Authorization=`Bearer${accessToken}`
+            config.headers.Authorization=`Bearer${accessToken}1`
         }
         return config
     },
